@@ -15,13 +15,13 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
-from alignment import Alignment
+from partfinder.alignment import Alignment
 import numpy as np
-from config import the_config
-from util import PartitionFinderError
+from partfinder.config import the_config
+from partfinder.util import PartitionFinderError
 
 # Create a set partition for each column in the alignment
 def create_set_parts(alignment):
@@ -73,4 +73,4 @@ def calculate_rates(set_parts):
 
 if __name__ == "__main__":
     set_parts = [[[1,3],[2],[4]], [[1],[2],[3],[4]], [[1,2,3],[4]], [[1,2],[3,4]], [[1,2,3,4]]]
-    print calculate_rates(set_parts)
+    print(calculate_rates(set_parts))

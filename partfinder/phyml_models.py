@@ -16,10 +16,10 @@
 # PartitionFinder implies that you agree with those licences and
 # conditions as well.
 
-import logtools
-from util import memoize
-from config import the_config
-from model_utils import get_num_params
+import partfinder.logtools as logtools
+from partfinder.util import memoize
+from partfinder.config import the_config
+from partfinder.model_utils import get_num_params
 log = logtools.get_logger()
 
 

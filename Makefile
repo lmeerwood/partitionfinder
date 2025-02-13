@@ -1,7 +1,7 @@
 
 clean-test:
-	find ./tests -name analysis -and -d | xargs rm -rf 
-	find ./tests -name log.txt | xargs rm
+	find ./tests -type d -name analysis -exec rm -rf {} + 
+	find ./tests -name log.txt -exec rm -rf {} +
 
 test:
 	py.test --verbose --color=yes tests

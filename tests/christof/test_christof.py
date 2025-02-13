@@ -42,16 +42,16 @@ def test_clustering_raxml_dna():
 def test_alignment_error(caplog):
     with pytest.raises(alignment.AlignmentError):
         main.call_main("protein", '--no-ml-tree "%s"' % path_from_function())
-    assert "Site 1000 is specified in [data_blocks], but the alignment only has 949 sites." in caplog.text()
+    assert "Site 1000 is specified in [data_blocks], but the alignment only has 949 sites." in caplog.text
 
 def test_overlap_error(caplog):
     with pytest.raises(util.PartitionFinderError):
         main.call_main("protein", '--no-ml-tree "%s"' % path_from_function())
-    assert "sites overlap in your block definitions" in caplog.text()
+    assert "sites overlap in your block definitions" in caplog.text
 
 def test_clustering_phyml_dna(caplog):
     with pytest.raises(util.PartitionFinderError):
         main.call_main("DNA", '--no-ml-tree "%s"' % path_from_function())
-    assert "Clustering methods are only available when using raxml" in caplog.text()
+    assert "Clustering methods are only available when using raxml" in caplog.text
 
 

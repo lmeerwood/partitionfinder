@@ -15,7 +15,7 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
 class Progress(object):

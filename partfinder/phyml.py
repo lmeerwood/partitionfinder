@@ -15,20 +15,20 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
 import os
 import sys
-import util
+import partfinder.util as util
 
 from pyparsing import (
     Word, Literal, nums, Suppress, ParseException,
     SkipTo,
 )
 
-import phyml_models as models
-from database import DataRecord, DataLayout
+import partfinder.phyml_models as models
+from partfinder.database import DataRecord, DataLayout
 
 _binary_name = 'phyml'
 if sys.platform == 'win32':
@@ -201,9 +201,11 @@ class Parser(object):
 
     def parse(self, text):
         log.debug("Parsing phyml output...")
+		if type(text) == 'bytes':
+			text = test.decode('utf-8')
         try:
             tokens = self.root_parser.parseString(text)
-        except ParseException, p:
+        except ParseException as p:
             log.error(str(p))
             raise util.ParseError
 

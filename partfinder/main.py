@@ -20,7 +20,7 @@ __VERSION__ = "2.1.1"
 import logging
 import sys
 import shlex
-import logtools
+import partfinder.logtools as logtools
 
 logging.basicConfig(
     format="%(levelname)-8s | %(asctime)s | %(message)s",
@@ -31,15 +31,15 @@ log = logtools.get_logger()
 from optparse import OptionParser
 
 # We import everything here as it forces all of debug regions to be loaded
-import config
-import analysis_method
-import util
-import reporter
-import progress
+import partfinder.config as config
+import partfinder.analysis_method as analysis_method
+import partfinder.util as util
+import partfinder.reporter as reporter
+import partfinder.progress as progress
 import datetime
-import parser
-import raxml
-import phyml
+import partfinder.parser as parser
+import partfinder.raxml
+import partfinder.phyml
 
 
 def debug_arg_callback(option, opt, value, theparser):
@@ -306,26 +306,13 @@ def check_options(op, options):
 
 
 def check_python_version():
-    """Check the python version is above 2.7 but lower than 3.0"""
+    """Check the python version is above 3.7"""
 
     python_version = float(
         "%d.%d" % (sys.version_info[0], sys.version_info[1]))
 
-    log.info("You have Python version %.1f" % python_version)
+    log.info("You have Python version %.2f" % python_version)
 
-    if python_version < 2.7:
-        log.error("""
-            Your Python version is %.1f, but this program requires Python 2.7.
-            Please upgrade to version 2.7 by visiting www.python.org/getit,
-            or  by following the instructions in the PartitionFinder manual.
-            """ % python_version)
-        return 0
-
-    if python_version > 3.0:
-        log.warning("""
-            Your Python version is %.1f. This program was not built to run
-            with version 3 or higher. To guarantee success, please use
-            Python 2.7.x""" % python_version)
 
 def run_analysis(cfg, options):
     # Now try processing everything....

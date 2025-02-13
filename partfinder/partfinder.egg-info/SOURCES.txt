@@ -1,0 +1,5 @@
+setup.py
+partfinder.egg-info/PKG-INFO
+partfinder.egg-info/SOURCES.txt
+partfinder.egg-info/dependency_links.txt
+partfinder.egg-info/top_level.txt

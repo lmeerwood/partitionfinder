@@ -15,13 +15,13 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 import pandas as pd
 import os
 import collections
 
 log = logtools.get_logger()
-from util import PartitionFinderError
+from partfinder.util import PartitionFinderError
 
 _available_lists = ["ALL", # all models, excluding those with base frequencies estimated by ML and protein GTR models
                     "ALLX", # all models, including those with base frequencies estimated by ML and protein GTR models

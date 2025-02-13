@@ -15,18 +15,18 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
 import logging
 import os
 import fnmatch
-import scheme
-import subset
-import parser
-import util
-import progress
-import cPickle as pickle
+import partfinder.scheme as scheme
+import partfinder.subset as subset
+import partfinder.parser as parser
+import partfinder.util as util
+import partfinder.progress as progress
+import pickle
 
 class ConfigurationError(util.PartitionFinderError):
     pass
@@ -98,8 +98,8 @@ class Configuration(object):
 
 
 
-        # Import the right processor
-        self.processor = __import__(phylogeny_program.lower(), globals())
+        self.processor = __import__(f'partfinder.{phylogeny_program.lower()}', globals(), locals(), ['*'])
+
 
         # This returns the record layout for the results that we store. It
         # varies depending on the processor, and also DNA vs protein

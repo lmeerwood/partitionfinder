@@ -16,14 +16,14 @@
 # and conditions as well.
 
 
-import imp
+import importlib.util
 
 DEPENDENCIES = ['numpy', 'pandas', 'tables', 'pyparsing', 'scipy', 'sklearn']
 
 for dep in DEPENDENCIES:
     try:
-        imp.find_module(dep)
-    except ImportError:
+        importlib.util.find_spec(dep).origin
+    except AttributeError:
         print('\n\n\n **** ERROR **** \n')
         print('Could not find the dependency %s, please check that you have '
 	    	  'followed the installation instructions in the manual '

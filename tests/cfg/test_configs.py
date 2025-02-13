@@ -1,6 +1,6 @@
 import os
 import pytest
-from partfinder import util, config
+from partfinder import util as util, config
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 

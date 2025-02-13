@@ -34,7 +34,7 @@ def test_overlap(caplog):
     # This isn't
     with pytest.raises(SchemeError):
         Scheme(c, 'a', [s1, s3])
-    assert "contains overlapping" in caplog.text()
+    assert "contains overlapping" in caplog.text
 
 
 

@@ -15,11 +15,11 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 import pandas
 log = logtools.get_logger()
-from config import the_config
-from model_utils import *
+from partfinder.config import the_config
+from partfinder.model_utils import *
 
 
 import os

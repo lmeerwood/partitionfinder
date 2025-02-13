@@ -1,0 +1,19 @@
+[project]
+name = "partitionfinder"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=2.2.2",
+    "pandas>=2.2.3",
+    "partfinder",
+    "pyparsing>=3.2.1",
+    "pytest>=8.3.4",
+    "scikit-learn>=1.6.1",
+    "scipy>=1.15.1",
+    "tables>=3.10.2",
+]
+
+[tool.uv.sources]
+partfinder = { path = "partfinder" }

@@ -15,15 +15,15 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
 import hashlib
-import cPickle as pickle
-import subset
-from util import get_aic, get_aicc, get_bic
+import pickle
+import partfinder.subset as subset
+from partfinder.util import get_aic, get_aicc, get_bic
 from scipy.stats import chi2 
-from util import PartitionFinderError
+from partfinder.util import PartitionFinderError
 
 class AnalysisError(PartitionFinderError):
     pass

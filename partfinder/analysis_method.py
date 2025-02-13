@@ -15,21 +15,21 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 import math
-import scheme
-import submodels
-from analysis import Analysis, AnalysisError
-from alignment import SubsetAlignment
-import neighbour
-import kmeans
-from subset import Subset
-import subset_ops
-import entropy
+import partfinder.scheme as scheme
+import partfinder.submodels as submodels
+from partfinder.analysis import Analysis, AnalysisError
+from partfinder.alignment import SubsetAlignment
+import partfinder.neighbour as neighbour
+import partfinder.kmeans as kmeans
+from partfinder.subset import Subset
+import partfinder.subset_ops as subset_ops
+import partfinder.entropy
 from scipy import spatial
-from scipy.misc import comb
+from scipy.special import comb
 import numpy as np
-from config import the_config
+from partfinder.config import the_config
 
 log = logtools.get_logger()
 
@@ -902,7 +902,7 @@ class KmeansAnalysis(Analysis):
 
         # now build subsets according to the new sites
         sub_dict = {} # this gives us the subsets to build
-        for k, v in sch_dict.iteritems():
+        for k, v in sch_dict.items():
             sub_dict.setdefault(v, []).append(k)
 
         new_subsets = []

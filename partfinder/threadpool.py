@@ -18,7 +18,7 @@
 # This code modified and vastly simplified from here
 # http://code.activestate.com/recipes/203871/
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
 import threading

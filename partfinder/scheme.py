@@ -15,13 +15,13 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
+import partfinder.logtools as logtools
 log = logtools.get_logger()
 
-import subset_ops
-import submodels
+import partfinder.subset_ops as subset_ops
+import partfinder.submodels as submodels
 
-from util import PartitionFinderError, get_aic, get_aicc, get_bic
+from partfinder.util import PartitionFinderError, get_aic, get_aicc, get_bic
 
 
 class SchemeError(PartitionFinderError):
@@ -149,7 +149,7 @@ class SchemeSet(object):
         return len(self.schemes_by_name)
 
     def __iter__(self):
-        return iter(self.schemes_by_name.itervalues())
+        return iter(self.schemes_by_name.values())
 
 
 def create_scheme(cfg, scheme_name, scheme_description):

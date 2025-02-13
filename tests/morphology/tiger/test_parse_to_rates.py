@@ -31,6 +31,6 @@ def test_axpi():
 def test_rates():
     set_parts = morph_tiger.create_set_parts(MORPH_ALIGN)
     rates = morph_tiger.calculate_rates(set_parts)
-    print rates
+    print(rates)
 
 test_rates()

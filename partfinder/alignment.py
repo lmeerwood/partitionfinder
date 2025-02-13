@@ -21,11 +21,11 @@
     http://www.atgc-montpellier.fr/phyml/usersguide.php?type=command
 
 """
-import logtools
+import partfinder.logtools as logtools
 import os
-from util import PartitionFinderError
+from partfinder.util import PartitionFinderError
 import numpy as np
-import cStringIO
+import io
 from itertools import chain
 
 log = logtools.get_logger()
@@ -338,7 +338,7 @@ class Alignment(object):
         p = AlignmentParser(stream)
         p.parse()
 
-        # Copy everything from the import parser
+        # Copy everything from the import partfinder.parser as parser
         self.sequence_length = p.sequence_length
         self.species = p.species
         self.data = p.data
@@ -349,11 +349,11 @@ class Alignment(object):
             log.error("Cannot find alignment file '%s'", pth)
             raise AlignmentError
 
-        with open(pth, 'rU') as stream:
+        with open(pth, 'r', newline='') as stream:
             self.parse_stream(stream)
 
     def parse(self, text):
-        stream = cStringIO.StringIO(text)
+        stream = io.StringIO(text)
         self.parse_stream(stream)
 
     def write(self, pth):
@@ -372,7 +372,7 @@ class Alignment(object):
             # up to 100
             shortened = "%s    " % (spec[:99])
             stream.write(shortened)
-            stream.write(sequence.tostring())
+            stream.write(sequence.tobytes().decode('utf-8'))
             stream.write("\n")
 
     def check_state_probs(self, subset, cfg):

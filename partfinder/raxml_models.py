@@ -15,12 +15,12 @@
 # conditions, using PartitionFinder implies that you agree with those licences
 # and conditions as well.
 
-import logtools
-import model_loader as mo
-from util import memoize
-from config import the_config
+import partfinder.logtools as logtools
+import partfinder.model_loader as mo
+from partfinder.util import memoize
+from partfinder.config import the_config
 
-from model_utils import get_num_params
+from partfinder.model_utils import get_num_params
 log = logtools.get_logger()
 
 
@@ -74,21 +74,21 @@ def get_model_difficulty(modelstring):
     return total
 
 if __name__ == "__main__":
-    print "  ",
-    print "Name".ljust(15),
-    print "Params".ljust(10),
-    print "Diff".ljust(10),
-    print "CommandLine"
+    print("  ",)
+    print("Name".ljust(15),)
+    print("Params".ljust(10),)
+    print("Diff".ljust(10),)
+    print("CommandLine")
     for i, model in enumerate(get_all_dna_models()):
-        print str(i+1).rjust(2), 
-        print model.ljust(15),
-        print str(get_num_params(model)).ljust(10),
-        print str(get_model_difficulty(model)).ljust(10),
-        print get_model_commandline(model)
+        print(str(i+1).rjust(2), )
+        print(model.ljust(15),)
+        print(str(get_num_params(model)).ljust(10),)
+        print(str(get_model_difficulty(model)).ljust(10),)
+        print(get_model_commandline(model))
     for i, model in enumerate(get_all_protein_models()):
-        print str(i+1).rjust(2), 
-        print model.ljust(15),
-        print str(get_num_params(model)).ljust(10),
-        print str(get_model_difficulty(model)).ljust(10),
-        print get_model_commandline(model)
+        print(str(i+1).rjust(2), )
+        print(model.ljust(15),)
+        print(str(get_num_params(model)).ljust(10),)
+        print(str(get_model_difficulty(model)).ljust(10),)
+        print(get_model_commandline(model))
 
