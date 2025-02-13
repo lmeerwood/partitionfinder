@@ -201,8 +201,8 @@ class Parser(object):
 
     def parse(self, text):
         log.debug("Parsing phyml output...")
-		if type(text) == 'bytes':
-			text = test.decode('utf-8')
+        if type(text) == 'bytes':
+            text = test.decode('utf-8')
         try:
             tokens = self.root_parser.parseString(text)
         except ParseException as p:
